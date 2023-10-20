@@ -1,32 +1,81 @@
-import { Modal, ModalOverlay, ModalContent, ModalHeader,
-ModalBody, ModalFooter, ModalCloseButton, Button, FormControl,
-FormLabel, Input, Box } from '@chakra-ui/react';
-import './modal.css';
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody,
+    ModalCloseButton, Button, FormControl, FormLabel, Input, Box } from "@chakra-ui/react";
+import { useState } from "react";
 
-const ModalComp = ({open, close})=> {
-    if(!open) return null;
-    return(
-        <div className='modalContainer'>
-            <div className="modalContent">
-                <div className="modalHeader">
-                    <h2>Novo Cadastro</h2>
-                    <div className="closeModal" onClick={close}>X</div>
-                </div>
-                <div className="modalBody">
-                    <form>
-                        <label htmlFor="name">Nome</label>
-                        <input type="text" className='name' />
-                        <label htmlFor="email">E-mail</label>
-                        <input type="text" className='email' />
-                    </form>
-                </div>
-                <div className="modalFooter">
-                    <button type='button' className='btnSalvar'>Salvar</button>
-                    <button type='button' className='btnCancelar'>Cancelar</button>
-                </div>
-            </div>
-        </div>
-    )
+const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
+const [name, setName] = useState(dataEdit.name || "");
+const [email, setEmail] = useState(dataEdit.email || "");
+
+const cadastreSave = () => {
+    if (!name || !email) return;
+    
+    if (emailAlreadyExists()) {
+        return alert("E-mail já cadastrado!");
+    }
+    
+    if (Object.keys(dataEdit).length) {
+        data[dataEdit.index] = { name, email };
+    }
+    
+    const newDataArray = !Object.keys(dataEdit).length
+    ? [...(data ? data : []), { name, email }]
+    : [...(data ? data : [])];
+    
+    localStorage.setItem("cad_cliente", JSON.stringify(newDataArray));
+    
+    setData(newDataArray);
+    
+    onClose();
 };
 
-export default ModalComp
+const emailAlreadyExists = () => {
+    if (dataEdit.email !== email && data?.length) {
+        return data.find((item) => item.email === email);
+    }
+    
+    return false;
+};
+
+return (
+    <>
+    <Modal isOpen={isOpen} onClose={onClose}>
+    <ModalOverlay />
+    <ModalContent>
+    <ModalHeader>Novo Cliente</ModalHeader>
+    <ModalCloseButton />
+    <ModalBody>
+    <FormControl display="flex" flexDir="column" gap={4}>
+    <Box>
+    <FormLabel>Nome</FormLabel>
+    <Input
+    type="text"
+    value={name}
+    onChange={(e) => setName(e.target.value)}
+    />
+    </Box>
+    <Box>
+    <FormLabel>E-mail</FormLabel>
+    <Input
+    type="email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    />
+    </Box>
+    </FormControl>
+    </ModalBody>
+    
+    <ModalFooter justifyContent="start">
+    <Button colorScheme="green" mr={3} onClick={cadastreSave}>
+    SALVAR
+    </Button>
+    <Button colorScheme="red" onClick={onClose}>
+    CANCELAR
+    </Button>
+    </ModalFooter>
+    </ModalContent>
+    </Modal>
+    </>
+    );
+};
+
+export default ModalComp;

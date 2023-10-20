@@ -1,12 +1,11 @@
-import * as React from 'react'
-import { ChakraProvider } from '@chakra-ui/react'
-import './App.css';
-import Table from './components/table/Table';
+import * as React from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
+import Container from './components/container/Container';
 
 function App() {
   return (
     <ChakraProvider>
-      <Table/>
+      <Container/>
     </ChakraProvider>
   );
 }
