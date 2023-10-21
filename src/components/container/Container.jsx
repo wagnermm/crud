@@ -1,8 +1,9 @@
 import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
-import { Box, Flex, Button, useDisclosure, Table, Thead,
+import { Box, Flex, useDisclosure, Table, Thead,
   Tr, Th, Tbody, Td, useBreakpointValue } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ModalComp from "../modal/ModalComponent";
+import './container.css';
 
 const Container = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,18 +32,13 @@ const Container = () => {
   };
 
   return (
-    <Flex
-      h="100vh"
-      align="center"
-      justify="center"
-      fontSize="20px"
-      fontFamily="roboto"
-    >
-      <Box maxW={800} w="100%" h="100vh" py={10} px={2}>
-        <Button colorScheme="blue" onClick={() => [setDataEdit({}), onOpen()]}>
+    <Flex className="mainContainer">
+      <Box className="btnContent">
+        <button className="btnCadastro" onClick={() => [setDataEdit({}), onOpen()]}>
           CADASTRAR
-        </Button>
-
+        </button>
+      </Box>
+      <Box className="container">
         <Box overflowY="auto" height="100%">
           <Table mt="6">
             <Thead>
@@ -59,12 +55,13 @@ const Container = () => {
             </Thead>
             <Tbody>
               {data.map(({ name, email }, index) => (
-                <Tr key={index} cursor="pointer " _hover={{ bg: "gray.100" }}>
+                <Tr key={index}>
                   <Td maxW={isMobile ? 5 : 100}>{name}</Td>
                   <Td maxW={isMobile ? 5 : 100}>{email}</Td>
                   <Td p={0}>
                     <EditIcon
                       fontSize={20}
+                      cursor="pointer"
                       onClick={() => [
                         setDataEdit({ name, email, index }),
                         onOpen(),
@@ -74,6 +71,7 @@ const Container = () => {
                   <Td p={0}>
                     <DeleteIcon
                       fontSize={20}
+                      cursor="pointer"
                       onClick={() => cadastreRemove(email)}
                     />
                   </Td>

@@ -1,6 +1,7 @@
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody,
-    ModalCloseButton, Button, FormControl, FormLabel, Input, Box } from "@chakra-ui/react";
+    ModalCloseButton, FormControl, FormLabel, Input, Box } from "@chakra-ui/react";
 import { useState } from "react";
+import './modal.css';
 
 const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
 const [name, setName] = useState(dataEdit.name || "");
@@ -39,40 +40,27 @@ const emailAlreadyExists = () => {
 return (
     <>
     <Modal isOpen={isOpen} onClose={onClose}>
-    <ModalOverlay />
-    <ModalContent>
-    <ModalHeader>Novo Cliente</ModalHeader>
-    <ModalCloseButton />
-    <ModalBody>
-    <FormControl display="flex" flexDir="column" gap={4}>
-    <Box>
-    <FormLabel>Nome</FormLabel>
-    <Input
-    type="text"
-    value={name}
-    onChange={(e) => setName(e.target.value)}
-    />
-    </Box>
-    <Box>
-    <FormLabel>E-mail</FormLabel>
-    <Input
-    type="email"
-    value={email}
-    onChange={(e) => setEmail(e.target.value)}
-    />
-    </Box>
-    </FormControl>
-    </ModalBody>
-    
-    <ModalFooter justifyContent="start">
-    <Button colorScheme="green" mr={3} onClick={cadastreSave}>
-    SALVAR
-    </Button>
-    <Button colorScheme="red" onClick={onClose}>
-    CANCELAR
-    </Button>
-    </ModalFooter>
-    </ModalContent>
+        <ModalOverlay />
+        <ModalContent>
+            <ModalHeader>Novo Cliente</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+                <FormControl display="flex" flexDir="column" gap={4}>
+                    <Box>
+                        <FormLabel>Nome</FormLabel>
+                        <Input type="text" value={name} onChange={(e) => setName(e.target.value)} maxLength={50}/>
+                    </Box>
+                    <Box>
+                        <FormLabel>E-mail</FormLabel>
+                        <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={50}/>
+                    </Box>
+                </FormControl>
+            </ModalBody>
+            <ModalFooter justifyContent="start" gap="2rem">
+                <button className="btnSalvar" onClick={cadastreSave}>SALVAR</button>
+                <button className="btnCancelar" onClick={onClose}>CANCELAR</button>
+            </ModalFooter>
+        </ModalContent>
     </Modal>
     </>
     );

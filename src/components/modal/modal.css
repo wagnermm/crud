@@ -1,0 +1,28 @@
+.btnSalvar {
+    width: 80px;
+    height: 30px;
+    font-size: 0.8rem;
+    background-color: #139c13;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.btnSalvar:hover {
+    background-color: #045204;
+}
+.btnCancelar {
+    width: 80px;
+    height: 30px;
+    font-size: 0.8rem;
+    background-color: #f00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.btnCancelar:hover {
+    background-color: #8f0303;
+}

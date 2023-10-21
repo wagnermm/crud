@@ -1,0 +1,42 @@
+.mainContainer {
+    width: 100%;
+    height: 100vh;
+    font-family: Roboto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+}
+.container {
+    width: 60%;
+    height: auto;
+    padding: 1rem;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+.btnContent {
+    width: 60%;
+    display: flex;
+    align-items: baseline;
+    margin-top: 5rem;
+}
+.btnCadastro {
+    width: 120px;
+    height: 40px;
+    font-size: 1rem;
+    background-color: #248;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.btnCadastro:hover {
+    letter-spacing: 1px;
+    background-color: #052055;
+}
+td {
+    font-weight: 700;
+    color: #333;
+}
