@@ -1,6 +1,6 @@
 import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
 import { Box, Flex, useDisclosure, Table, Thead,
-  Tr, Th, Tbody, Td, useBreakpointValue } from "@chakra-ui/react";
+  Tr, Th, Tbody, Td } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ModalComp from "../modal/ModalComponent";
 import './container.css';
@@ -9,11 +9,6 @@ const Container = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [data, setData] = useState([]);
   const [dataEdit, setDataEdit] = useState({});
-
-  const isMobile = useBreakpointValue({
-    base: true,
-    lg: false,
-  });
 
   useEffect(() => {
     const db_costumer = localStorage.getItem("cad_cliente")
@@ -43,10 +38,10 @@ const Container = () => {
           <Table mt="6">
             <Thead>
               <Tr>
-                <Th maxW={isMobile ? 5 : 100} fontSize="20px">
+                <Th>
                   Nome
                 </Th>
-                <Th maxW={isMobile ? 5 : 100} fontSize="20px">
+                <Th>
                   E-Mail
                 </Th>
                 <Th p={0}></Th>
@@ -56,8 +51,8 @@ const Container = () => {
             <Tbody>
               {data.map(({ name, email }, index) => (
                 <Tr key={index}>
-                  <Td maxW={isMobile ? 5 : 100}>{name}</Td>
-                  <Td maxW={isMobile ? 5 : 100}>{email}</Td>
+                  <Td>{name}</Td>
+                  <Td>{email}</Td>
                   <Td p={0}>
                     <EditIcon
                       fontSize={20}
