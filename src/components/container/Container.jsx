@@ -38,10 +38,10 @@ const Container = () => {
           <Table mt="6">
             <Thead>
               <Tr>
-                <Th>
+                <Th fontSize="20px">
                   Nome
                 </Th>
-                <Th>
+                <Th fontSize="20px">
                   E-Mail
                 </Th>
                 <Th p={0}></Th>
