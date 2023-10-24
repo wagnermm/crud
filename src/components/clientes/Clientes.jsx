@@ -3,13 +3,15 @@ import { Box, Flex, useDisclosure, Table, Thead,
   Tr, Th, Tbody, Td } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ModalComp from "../modal/ModalComponent";
-import './container.css';
+import './clientes.css';
 
-const Container = () => {
+const Clientes = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [data, setData] = useState([]);
   const [dataEdit, setDataEdit] = useState({});
-  const [clientes, setClientes] = useState([]);
+
+/* 
+  const [cadClientes, setCadClientes] = useState([]);
 
   fetch("http://localhost:5000/clientes", {
     method:"GET",
@@ -18,18 +20,19 @@ const Container = () => {
     }
   }).then((response)=> response.json())
     .then((data)=> {
-      setClientes(data)
+      setCadClientes(data)
     })
     .catch((err)=> console.log(err))
+*/
 
- /* useEffect(() => {
+  useEffect(() => {
     const db_costumer = localStorage.getItem("cad_cliente")
       ? JSON.parse(localStorage.getItem("cad_cliente"))
       : [];
 
     setData(db_costumer);
   }, [setData]);
-*/
+
   const cadastreRemove = (email) => {
     const newArray = data.filter((item) => item.email !== email);
 
@@ -40,6 +43,7 @@ const Container = () => {
 
   return (
     <Flex className="mainContainer">
+      <h1 className="clientesTitle">Cadastro de Clientes</h1>
       <Box className="btnContent">
         <button className="btnCadastro" onClick={() => [setDataEdit({}), onOpen()]}>
           CADASTRAR
@@ -102,4 +106,4 @@ const Container = () => {
   );
 };
 
-export default Container;
+export default Clientes;

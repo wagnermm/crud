@@ -16,7 +16,7 @@ const cadastreSave = () => {
     }
 
     if (!emailRegex.test(email)) {
-        return alert("E-mail incorreto")
+        return alert("E-mail incorreto");
     }
     
     if (Object.keys(dataEdit).length) {
@@ -57,7 +57,7 @@ return (
                     </Box>
                     <Box>
                         <FormLabel>E-mail</FormLabel>
-                        <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={50}/>
+                        <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                     </Box>
                 </FormControl>
             </ModalBody>
