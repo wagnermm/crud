@@ -1,0 +1,20 @@
+{
+    "clientes": [
+        {
+            "name": "Wagner Miranda",
+            "email": "wagner.miranda@gmail.com"
+        },
+        {
+            "name": "João Silva",
+            "email": "joao.silva@gmail.com"
+        },
+        {
+            "name": "Maria Vitória",
+            "email": "maria.vitoria@hotmail.com"
+        },
+        {
+            "name": "Pedro Costa",
+            "email": "pedro.costa@gmail.com"
+        }
+    ]
+}

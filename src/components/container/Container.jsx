@@ -9,15 +9,27 @@ const Container = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [data, setData] = useState([]);
   const [dataEdit, setDataEdit] = useState({});
+  const [clientes, setClientes] = useState([]);
 
-  useEffect(() => {
+  fetch("http://localhost:5000/clientes", {
+    method:"GET",
+    headers: {
+      'content-type': 'aplication/json'
+    }
+  }).then((response)=> response.json())
+    .then((data)=> {
+      setClientes(data)
+    })
+    .catch((err)=> console.log(err))
+
+ /* useEffect(() => {
     const db_costumer = localStorage.getItem("cad_cliente")
       ? JSON.parse(localStorage.getItem("cad_cliente"))
       : [];
 
     setData(db_costumer);
   }, [setData]);
-
+*/
   const cadastreRemove = (email) => {
     const newArray = data.filter((item) => item.email !== email);
 

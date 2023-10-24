@@ -6,12 +6,17 @@ import './modal.css';
 const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
 const [name, setName] = useState(dataEdit.name || "");
 const [email, setEmail] = useState(dataEdit.email || "");
+const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 
 const cadastreSave = () => {
     if (!name || !email) return;
     
     if (emailAlreadyExists()) {
         return alert("E-mail já cadastrado!");
+    }
+
+    if (!emailRegex.test(email)) {
+        return alert("E-mail incorreto")
     }
     
     if (Object.keys(dataEdit).length) {
