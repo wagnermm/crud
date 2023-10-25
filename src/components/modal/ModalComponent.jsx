@@ -32,6 +32,7 @@ const cadastreSave = () => {
     setData(newDataArray);
     
     onClose();
+    alert("Cadastro realizado com sucesso!");
 };
 
 const emailAlreadyExists = () => {

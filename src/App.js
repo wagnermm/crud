@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
-import Home from './components/home/Home';
+import Lista from './components/lista/Lista';
 import Clientes from './components/clientes/Clientes';
 import Sobre from './components/sobre/Sobre';
 import { BrowserRouter, Routes, Link, Route } from 'react-router-dom';
@@ -15,14 +15,14 @@ function App() {
           <div className='logo'>Logo</div>
           <nav className='nav'>
             <ul>
-              <li><Link to="/">Home</Link></li>
+              <li><Link to="/">Lista</Link></li>
               <li><Link to="/clientes">Cadastro</Link></li>
               <li><Link to="/sobre">Sobre</Link></li>
             </ul>
           </nav>
         </header>
         <Routes>
-          <Route path='/' element={<Home/>}></Route>
+          <Route path='/' element={<Lista/>}></Route>
           <Route path='/clientes' element={<Clientes/>}></Route>
           <Route path='/sobre' element={<Sobre/>}></Route>
         </Routes>

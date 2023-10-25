@@ -10,21 +10,6 @@ const Clientes = () => {
   const [data, setData] = useState([]);
   const [dataEdit, setDataEdit] = useState({});
 
-/* 
-  const [cadClientes, setCadClientes] = useState([]);
-
-  fetch("http://localhost:5000/clientes", {
-    method:"GET",
-    headers: {
-      'content-type': 'aplication/json'
-    }
-  }).then((response)=> response.json())
-    .then((data)=> {
-      setCadClientes(data)
-    })
-    .catch((err)=> console.log(err))
-*/
-
   useEffect(() => {
     const db_costumer = localStorage.getItem("cad_cliente")
       ? JSON.parse(localStorage.getItem("cad_cliente"))
@@ -34,11 +19,13 @@ const Clientes = () => {
   }, [setData]);
 
   const cadastreRemove = (email) => {
-    const newArray = data.filter((item) => item.email !== email);
-
-    setData(newArray);
-
-    localStorage.setItem("cad_cliente", JSON.stringify(newArray));
+    const confirmDelete = window.confirm("Tem certeza que deseja excluir este cadastro?");
+    if (confirmDelete) {
+      const newArray = data.filter((item) => item.email !== email);
+      setData(newArray);
+      localStorage.setItem("cad_cliente", JSON.stringify(newArray));
+      alert("Cadastro excluído com sucesso!");
+    }
   };
 
   return (
