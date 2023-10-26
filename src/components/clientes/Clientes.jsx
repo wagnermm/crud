@@ -12,7 +12,7 @@ const Clientes = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("http://localhost:5000/clientes");
+      const response = await fetch("https://65394f8ce3b530c8d9e840b7.mockapi.io/v1/clients");
       const data = await response.json();
       setData(data);
     }
