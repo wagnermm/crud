@@ -20,3 +20,71 @@ li {
     list-style: none;
     font-size: 1.4rem;
 }
+.nav-mobile, .btn-mobile {
+    display: none;
+}
+
+@media(max-width: 768px) {
+    .nav {
+        display: none;
+    }
+    .nav-mobile, .btn-mobile {
+        display: block;
+    }
+    .btn-mobile div{
+        width: 2rem;
+        height: 0.3rem;
+        margin: 0.3rem;
+        background: hsl(240, 100%, 5%);
+        transition: 0.4s ease-in;
+    }
+    .nav-mobile {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70vw;
+        height: 100vh;
+        background: #fff;
+        transform: translateX(100%);
+        transition: 0.5s ease-in;
+        z-index: 2;
+    }
+    .nav-mobile ul {
+        margin-top: 6rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+    }
+    .nav-mobile li {
+        list-style: none;
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+    .nav-mobile a {
+        font-size: 2.3rem;
+        text-decoration: none;
+        color: hsl(240, 100%, 5%);
+        font-weight: 700;
+    }
+    .nav-active {
+        transform: translateX(0);
+    }
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-4px, 5px);
+    }
+    .toggle .line2 {
+        opacity: 0;
+    }
+    .toggle .line3 {
+        transform: rotate(45deg) translate(-4px, -5px);
+    }
+    .close-menu {
+        width: 100%;
+        padding: 1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        font-size: 4rem;
+    }
+}

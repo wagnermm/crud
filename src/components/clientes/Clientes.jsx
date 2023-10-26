@@ -11,12 +11,13 @@ const Clientes = () => {
   const [dataEdit, setDataEdit] = useState({});
 
   useEffect(() => {
-    const db_costumer = localStorage.getItem("cad_cliente")
-      ? JSON.parse(localStorage.getItem("cad_cliente"))
-      : [];
-
-    setData(db_costumer);
-  }, [setData]);
+    async function fetchData() {
+      const response = await fetch("http://localhost:5000/clientes");
+      const data = await response.json();
+      setData(data);
+    }
+    fetchData();
+  }, []);
 
   const cadastreRemove = (email) => {
     const confirmDelete = window.confirm("Tem certeza que deseja excluir este cadastro?");
