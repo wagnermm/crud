@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import logo from './logo.svg';
 import { ChakraProvider } from '@chakra-ui/react';
 import Home from './components/home/Home';
 import Clientes from './components/clientes/Clientes';
@@ -26,7 +27,9 @@ const closeMenu=()=> {
     <ChakraProvider>
       <BrowserRouter>
         <header className='header'>
-          <div className='logo'>Logo</div>
+          <div >
+            <img src={logo} className='logo' alt="logo" />
+          </div>
           <nav className='nav'>
             <ul>
               <li><Link to="/">Home</Link></li>

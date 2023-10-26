@@ -1,10 +1,21 @@
 .header {
     width: 100%;
-    height: 50px;
+    height: 80px;
     padding: 2rem;
+    background-color: #282c34;
+    border-bottom: 1px solid #61dafb;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.logo {
+    height: 4rem;
+    pointer-events: none;
+  }
+@media (prefers-reduced-motion: no-preference) {
+    .logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 .nav {
     display: flex;
@@ -19,12 +30,25 @@ ul {
 li {
     list-style: none;
     font-size: 1.4rem;
+    color: #fff;
+    transition: 0.4s ease-in-out;
+}
+li:hover {
+    text-shadow: 1px 1px #fff;
 }
 .nav-mobile, .btn-mobile {
     display: none;
 }
+@keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
-@media(max-width: 768px) {
+@media(max-width: 665px) {
     .nav {
         display: none;
     }
@@ -35,7 +59,7 @@ li {
         width: 2rem;
         height: 0.3rem;
         margin: 0.3rem;
-        background: hsl(240, 100%, 5%);
+        background: #fff;
         transition: 0.4s ease-in;
     }
     .nav-mobile {
@@ -50,7 +74,7 @@ li {
         z-index: 2;
     }
     .nav-mobile ul {
-        margin-top: 6rem;
+        margin-top: 2rem;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -64,7 +88,7 @@ li {
     .nav-mobile a {
         font-size: 2.3rem;
         text-decoration: none;
-        color: hsl(240, 100%, 5%);
+        color: #282c34;
         font-weight: 700;
     }
     .nav-active {
@@ -82,6 +106,7 @@ li {
     .close-menu {
         width: 100%;
         padding: 1rem;
+        color: #282c34;
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
